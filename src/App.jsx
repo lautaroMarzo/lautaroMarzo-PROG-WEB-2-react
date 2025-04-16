@@ -1,33 +1,51 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
 
+
+const productos = [
+  {Nombre:"Proteina",Precio:66000},
+  {Nombre:"Creatina",Precio:78000},
+  {Nombre:"Prentreno",Precio:40000},
+  {Nombre:"Proteina",Precio:66000},
+  {Nombre:"Creatina",Precio:78000},
+  {Nombre:"Prentreno",Precio:40000},
+  {Nombre:"Proteina",Precio:66000},
+  {Nombre:"Creatina",Precio:78000},
+  {Nombre:"Prentreno",Precio:40000},
+  {Nombre:"Proteina",Precio:66000},
+  {Nombre:"Creatina",Precio:78000},
+  {Nombre:"Prentreno",Precio:40000},
+  {Nombre:"Proteina",Precio:66000},
+  {Nombre:"Creatina",Precio:78000},
+  {Nombre:"Prentreno",Precio:40000}
+] 
+
 function App() {
-  const [count, setCount] = useState(0)
+
 
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <div>
+    <h1>Mi carrito de Compras</h1>
+    <h4>Añade tu compra al Carrito</h4>
+    <div className='container mt-4'>
+      <div className='row'>
+      {
+        productos.map((producto, index)=>(
+          <div className="col-md-4 mb-3" key={index}>
+            <div className="card h-100">
+              <div className="card-body">
+               <h5 className='card-title'>{producto.Nombre}</h5>
+               <h6 className='card-subtitle'>${producto.Precio}</h6> 
+              </div>
+            </div>
+          </div>
+        ))
+      }
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+
+    </div>
+    </div>
+
     </>
   )
 }
