@@ -49,6 +49,9 @@ function App() {
     <h1>Mi carrito de Compras</h1>
     <h4>Total de Compras: ${total}</h4>
     <button className='btn btn-danger' onClick={()=>setcarrito([])}>Vaciar Carrito</button>
+    <button className='btn btn-secondary ms-2'>
+      🛒 Carrito
+    </button>
     <div className='container mt-4'>
       <div className='row'>
       {
