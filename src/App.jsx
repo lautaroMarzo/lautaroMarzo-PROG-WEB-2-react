@@ -1,11 +1,6 @@
 import './App.css'
 import { useMemo, useState } from 'react'
-
-const productos = [
-  {Nombre:"Proteina",Precio:66000},
-  {Nombre:"Creatina",Precio:78000},
-  {Nombre:"Prentreno",Precio:40000}
-] 
+import { productos } from './shared/constants/productos'
 
 function App() {
   const [carrito, setcarrito] = useState([])
@@ -28,18 +23,32 @@ function App() {
       return item 
     }
     )
-    setcarrito([nuevocarrito]) 
+    setcarrito(nuevocarrito) 
     }else {
       // le agrego el producto
       setcarrito([...carrito, {...producto, cantidad:1}])
     } 
   }
-
+ 
+  const eliminarCarrito = (producto)=> {
+  const exsiste = carrito.find(item => item.Nombre === producto.Nombre)
+  if (exsiste){
+    const nuevocarrito = carrito.map(item => {
+      if(item.Nombre === producto.Nombre && item.cantidad >= 1){
+        return{...item, cantidad: item.cantidad - 1}
+      }
+      return item
+    }
+  )
+  setcarrito(nuevocarrito)
+  }
+ }
+ 
   return (
-    <>
     <div>
     <h1>Mi carrito de Compras</h1>
     <h4>Total de Compras: ${total}</h4>
+    <button className='btn btn-danger' onClick={()=>setcarrito([])}>Vaciar Carrito</button>
     <div className='container mt-4'>
       <div className='row'>
       {
@@ -53,6 +62,8 @@ function App() {
                className="btn btn-primary"
                onClick={()=>agregarProducto(producto)}
                >Agregar</button>
+               <button className="btn btn-danger"
+               onClick={()=>eliminarCarrito(producto)}>Eliminar</button>
               </div>
             </div>
           </div>
@@ -62,8 +73,6 @@ function App() {
 
     </div>
     </div>
-
-    </>
   )
 }
 

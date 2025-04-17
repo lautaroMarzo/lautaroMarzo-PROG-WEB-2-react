@@ -33,8 +33,12 @@
   }
 }
 
-.card {
+
+
+.card-body {
   padding: 2em;
+  background: #a6fde0;
+  box-shadow: 0 0 2em rgba(0, 0, 0, 0.2);
 }
 
 .read-the-docs {
